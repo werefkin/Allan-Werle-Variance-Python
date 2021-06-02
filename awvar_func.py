@@ -20,6 +20,7 @@ def awvar(data,dt=1):
     data - input spectroscopic data
     dt - sampling rate
     """
+    n=len(data)
     clusters=np.unique(np.arange(0,int(np.round(n/2)))+1).astype(np.int64)
     awvar=[]
     for clus in clusters:
@@ -53,6 +54,7 @@ def oawvar(data,dt=1):
     dt - sampling rate
     """
     #OVERLAPPING Allan-Werle variance
+    n=len(data)
     clusters=np.unique(np.arange(0,int(np.round(n/2)))+1).astype(np.int64)
     oawvar=[]
     
@@ -75,9 +77,9 @@ def oawvar(data,dt=1):
 
 #DEMO 
 #GENERATE SOME INPUT DATA -- some spectroscopic data similar to one generated in Werle, P., Mücke, R. & Slemr, F. The limits of signal averaging in atmospheric trace-gas monitoring by tunable diode-laser absorption spectroscopy (TDLAS). Appl. Phys. B 57, 131–139 (1993). https://doi.org/10.1007/BF00425997
-n=600 
+N=600 
 a=12
-data=np.zeros(n)
+data=np.zeros(N)
 for i in range(0,len(data)):
     data[i]=a-5e-5*i+np.random.normal(0, 0.01)
 
