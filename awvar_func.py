@@ -65,7 +65,11 @@ def oawvar(data,dt=1):
             as0=np.mean(data[j:j+clus])
             as1=np.mean(data[j+clus:j+2*clus])           
             diff.append((as1-as0))
-        oawvar.append(np.mean(np.array(diff)**2)/2)
+        arr = np.array(diff, dtype=np.float64)
+        if arr.size == 0 or np.isnan(arr).all():
+            oawvar.append(np.nan)
+        else:
+            oawvar.append(np.nanmean(arr**2)/2)
     taus=clusters*dt
     return oawvar, taus
 
