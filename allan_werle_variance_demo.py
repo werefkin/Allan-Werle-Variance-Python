@@ -40,7 +40,7 @@ for clus in clusters:
         
         diff.append((as1-as0))
         
-    avar.append(np.mean(np.array(diff)**2)/2)
+    avar.append(np.mean(np.array(diff,dtype=np.float64)**2)/2)
     
 
 
@@ -58,14 +58,17 @@ for clus in clusters:
         as0=np.mean(data[j:j+clus])
         as1=np.mean(data[j+clus:j+2*clus])           
         diff.append((as1-as0))
-    oavar.append(np.mean(np.array(diff)**2)/2)
-
-
+    arr = np.array(diff, dtype=np.float64)
+    if arr.size == 0 or np.isnan(arr).all():
+        oavar.append(np.nan)
+    else:
+        oavar.append(np.nanmean(arr**2)/2)
+a=1
 
 #PLOT
-plt.loglog(clusters,np.array(avar))    
-plt.loglog(clusters,np.array(oavar))     
- 
+plt.loglog(clusters,np.array(avar,dtype=np.float64))    
+plt.loglog(clusters,np.array(oavar,dtype=np.float64))     
+plt.show()
 
 
 

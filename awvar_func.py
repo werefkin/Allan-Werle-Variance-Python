@@ -90,9 +90,9 @@ oa, taus2 = oawvar(data)
 
 
 #PLOT
-plt.loglog(taus1,np.array(av))    
-plt.loglog(taus2,np.array(oa))     
- 
+plt.loglog(taus1,np.array(av,dtype=np.float64))    
+plt.loglog(taus2,np.array(oa,dtype=np.float64))     
+plt.show()
 
 
 
