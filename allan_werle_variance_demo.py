@@ -63,7 +63,6 @@ for clus in clusters:
         oavar.append(np.nan)
     else:
         oavar.append(np.nanmean(arr**2)/2)
-a=1
 
 #PLOT
 plt.loglog(clusters,np.array(avar,dtype=np.float64))    
